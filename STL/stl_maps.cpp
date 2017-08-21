@@ -16,9 +16,10 @@ int main() {
     cin>>nums;
     int operation;
     int marks;
-    string name;
-    map <string,int> map;
-    map<string,int> ::iter;
+    string name; 
+    map <string, int> m;
+    map<string,int> ::iterator iter;
+    
     for (int i=0;i<nums;i++){
         
         cin >>operation;
@@ -27,27 +28,36 @@ int main() {
             
             cin>> name;
             cin>> marks;
-            
-            if(map.find(name)==map.end()){
-                
-                int curr_marks=map[name];
-                marks+=curr_marks;
+            iter=m.find(name);
+            if(iter==m.end()){
+                m.insert(make_pair(name,marks));
+                //cout<<"Not Found " <<name << "\n ";
+               
+            }
+            else{
+                 
+                 int curr_marks=m[name];
+                 marks+=curr_marks;
+                 //cout<<"Found " <<name << "old marks: " << curr_marks <<"new marks: "<< marks<< "\n ";
+                 m.erase(name);
+                 m.insert(make_pair(name,marks));
                 
             }
-            map.insert(make_pair(name,marks));
+           
             
             
             
             
         }
-        if(operation==2){
+        else if(operation==2){
             cin>> name;
-            map.erase(name);
+            m.erase(name);
             
         }
-        if(operation==3){
+        else if(operation==3){
+            //cout<< "operation 3 ";
             cin>>name;
-            cout<<map[name];
+            cout<<m[name]<<"\n";
         }
         
         
