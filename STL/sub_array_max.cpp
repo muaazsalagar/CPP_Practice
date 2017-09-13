@@ -20,7 +20,12 @@ void printKMax(int arr[], int n, int k){
             tempMaxes.push_back(arr[i+j]);     
             
         }
-       
+        sort(tempMaxes.begin(),tempMaxes.end());
+        //maxes.push_back(tempMaxes[k-1]);
+        cout<<tempMaxes[k-1] <<" ";
+        
+        i++;
+        
         
     }
     cout<<"\n";
